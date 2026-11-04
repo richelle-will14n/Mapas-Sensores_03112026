@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de sensores | Manaus</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
+  <script src="sensores.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="eyebrow">LABORATÓRIO DE GELOCALIZAÇÃO</span><h1>Sensores de Manaus</h1></div>
+    <button id="sair" class="secondary">Sair</button>
+  </header>
+  <main class="layout">
+    <aside class="panel">
+      <h2>Cadastrar sensor</h2>
+      <p>Clique em um ponto no mapa ou preencha as coordenadas.</p>
+      <form id="sensorForm">
+        <label for="nome">Nome / tag do sensor</label>
+        <input id="nome" maxlength="60" required placeholder="Ex.: SENSOR-001">
+        <div class="duas-colunas">
+          <div><label for="lat">Latitude</label><input id="lat" type="number" step="any" min="-90" max="90" required placeholder="-3.1303"></div>
+          <div><label for="lng">Longitude</label><input id="lng" type="number" step="any" min="-180" max="180" required placeholder="-60.0234"></div>
+        </div>
+        <label for="status">Status</label>
+        <select id="status"><option value="conectado">Conectado</option><option value="offline">Offline</option></select>
+        <button type="submit">Cadastrar sensor</button>
+      </form>
+      <p id="mensagem" role="status" aria-live="polite">Clique no mapa para escolher as coordenadas.</p>
+      <div class="legenda"><span><i class="bolinha verde"></i> Conectado</span><span><i class="bolinha vermelha"></i> Offline</span></div>
+      <div class="acoes"><button id="mostrarTodos" class="secondary">Mostrar todos</button><button id="limpar" class="danger">Limpar sensores</button></div>
+      <h2>Sensores cadastrados <span id="contador">(0)</span></h2>
+      <ul id="listaSensores" class="lista"></ul>
+      <small>O status é manual e simulado: não há comunicação com um sensor físico. Dados salvos somente neste navegador.</small>
+    </aside>
+    <section class="map-area"><div id="mapa" aria-label="Mapa de sensores em Manaus"></div></section>
+  </main>
+</body>
+</html>
